@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://co7nqia6qeh2i" path="res://graphics/map.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://beps85c0dkmar" path="res://scenes/player.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://drvx2r8j86a0g" path="res://scenes/exercise_object.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D" unique_id=1786667225]
 
@@ -10,3 +11,6 @@ texture = ExtResource("1_uwrxv")
 
 [node name="Player" parent="." unique_id=584917900 instance=ExtResource("2_yqjtg")]
 position = Vector2(23, 46)
+
+[node name="ExerciseObject" parent="." unique_id=1851452558 instance=ExtResource("3_lnu2h")]
+position = Vector2(121, 208)
