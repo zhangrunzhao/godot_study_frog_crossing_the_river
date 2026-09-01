@@ -2,7 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://co7nqia6qeh2i" path="res://graphics/map.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://beps85c0dkmar" path="res://scenes/player.tscn" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://drvx2r8j86a0g" path="res://scenes/exercise_object.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://drvx2r8j86a0g" path="res://scenes/tree.tscn" id="3_lnu2h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxesk"]
+size = Vector2(20, 680)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bvic"]
+size = Vector2(424.5, 26)
 
 [node name="Game" type="Node2D" unique_id=1786667225]
 
@@ -14,3 +20,29 @@ position = Vector2(23, 46)
 
 [node name="ExerciseObject" parent="." unique_id=1851452558 instance=ExtResource("3_lnu2h")]
 position = Vector2(121, 208)
+
+[node name="Borders" type="Node" parent="." unique_id=1481053808]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders" unique_id=285130234]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D" unique_id=877559879]
+position = Vector2(-203, -1)
+shape = SubResource("RectangleShape2D_lxesk")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Borders" unique_id=1255258571]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D2" unique_id=1068446442]
+position = Vector2(204, 0)
+shape = SubResource("RectangleShape2D_lxesk")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Borders" unique_id=9668244]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D3" unique_id=1714484837]
+position = Vector2(0.25, -334)
+shape = SubResource("RectangleShape2D_5bvic")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Borders" unique_id=1188210391]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D4" unique_id=749211114]
+position = Vector2(-1, 333)
+shape = SubResource("RectangleShape2D_5bvic")
