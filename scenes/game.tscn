@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dxbsc6u1fdd63"]
 
+[ext_resource type="Script" uid="uid://ce2a1b644chcl" path="res://scenes/game.gd" id="1_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://co7nqia6qeh2i" path="res://graphics/map.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://beps85c0dkmar" path="res://scenes/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://drvx2r8j86a0g" path="res://scenes/tree.tscn" id="3_lnu2h"]
@@ -11,17 +12,23 @@ size = Vector2(20, 680)
 size = Vector2(424.5, 26)
 
 [node name="Game" type="Node2D" unique_id=1786667225]
+script = ExtResource("1_lbhrr")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2119678168]
+[node name="BG" type="Sprite2D" parent="." unique_id=2119678168]
 texture = ExtResource("1_uwrxv")
 
 [node name="Player" parent="." unique_id=584917900 instance=ExtResource("2_yqjtg")]
 position = Vector2(23, 46)
 
-[node name="ExerciseObject" parent="." unique_id=1851452558 instance=ExtResource("3_lnu2h")]
+[node name="Tree" parent="." unique_id=1851452558 instance=ExtResource("3_lnu2h")]
 position = Vector2(121, 208)
 
 [node name="Borders" type="Node" parent="." unique_id=1481053808]
+
+[node name="FinishArea2D" type="Area2D" parent="Borders" unique_id=1446096893]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/FinishArea2D" unique_id=1252161438]
+polygon = PackedVector2Array(-190, -317, -190, -133, 191, -133, 191, -319)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Borders" unique_id=285130234]
 
@@ -46,3 +53,12 @@ shape = SubResource("RectangleShape2D_5bvic")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D4" unique_id=749211114]
 position = Vector2(-1, 333)
 shape = SubResource("RectangleShape2D_5bvic")
+
+[node name="Timer2" type="Node" parent="." unique_id=1936297575]
+
+[node name="CarTimer" type="Timer" parent="Timer2" unique_id=1300289361]
+wait_time = 4.0
+autostart = true
+
+[connection signal="body_entered" from="Borders/FinishArea2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Borders/FinishArea2D" to="." method="_on_finish_area_2d_body_entered"]
