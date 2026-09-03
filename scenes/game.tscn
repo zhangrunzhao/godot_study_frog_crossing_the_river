@@ -17,38 +17,42 @@ script = ExtResource("1_lbhrr")
 [node name="BG" type="Sprite2D" parent="." unique_id=2119678168]
 texture = ExtResource("1_uwrxv")
 
-[node name="Player" parent="." unique_id=584917900 instance=ExtResource("2_yqjtg")]
-position = Vector2(23, 46)
-
-[node name="Tree" parent="." unique_id=1851452558 instance=ExtResource("3_lnu2h")]
-position = Vector2(121, 208)
-
 [node name="Borders" type="Node" parent="." unique_id=1481053808]
 
 [node name="FinishArea2D" type="Area2D" parent="Borders" unique_id=1446096893]
+light_mask = 0
+visibility_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/FinishArea2D" unique_id=1252161438]
 polygon = PackedVector2Array(-190, -317, -190, -133, 191, -133, 191, -319)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Borders" unique_id=285130234]
+light_mask = 8
+visibility_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D" unique_id=877559879]
 position = Vector2(-203, -1)
 shape = SubResource("RectangleShape2D_lxesk")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Borders" unique_id=1255258571]
+light_mask = 8
+visibility_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D2" unique_id=1068446442]
 position = Vector2(204, 0)
 shape = SubResource("RectangleShape2D_lxesk")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Borders" unique_id=9668244]
+light_mask = 8
+visibility_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D3" unique_id=1714484837]
 position = Vector2(0.25, -334)
 shape = SubResource("RectangleShape2D_5bvic")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Borders" unique_id=1188210391]
+light_mask = 8
+visibility_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D4" unique_id=749211114]
 position = Vector2(-1, 333)
@@ -57,8 +61,36 @@ shape = SubResource("RectangleShape2D_5bvic")
 [node name="Timer2" type="Node" parent="." unique_id=1936297575]
 
 [node name="CarTimer" type="Timer" parent="Timer2" unique_id=1300289361]
-wait_time = 4.0
 autostart = true
+
+[node name="Objects" type="Node" parent="." unique_id=1052509711]
+
+[node name="Player" parent="Objects" unique_id=584917900 instance=ExtResource("2_yqjtg")]
+position = Vector2(23, 46)
+
+[node name="Tree" parent="Objects" unique_id=1851452558 instance=ExtResource("3_lnu2h")]
+position = Vector2(121, 208)
+
+[node name="CarStartPositions" type="Node" parent="." unique_id=1783063650]
+
+[node name="Marker2D" type="Marker2D" parent="CarStartPositions" unique_id=1337201187]
+position = Vector2(-204, -39)
+
+[node name="Marker2D2" type="Marker2D" parent="CarStartPositions" unique_id=139192497]
+position = Vector2(-204, -6)
+
+[node name="Marker2D3" type="Marker2D" parent="CarStartPositions" unique_id=1115537103]
+position = Vector2(-204, 102)
+
+[node name="Marker2D4" type="Marker2D" parent="CarStartPositions" unique_id=2107610543]
+position = Vector2(204, -39)
+
+[node name="Marker2D5" type="Marker2D" parent="CarStartPositions" unique_id=1460868880]
+position = Vector2(204, 0)
+
+[node name="Marker2D6" type="Marker2D" parent="CarStartPositions" unique_id=1147047948]
+position = Vector2(203, 104)
 
 [connection signal="body_entered" from="Borders/FinishArea2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Borders/FinishArea2D" to="." method="_on_finish_area_2d_body_entered"]
+[connection signal="timeout" from="Timer2/CarTimer" to="." method="_on_car_timer_timeout"]

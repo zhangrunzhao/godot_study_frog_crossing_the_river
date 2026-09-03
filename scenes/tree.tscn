@@ -8,6 +8,7 @@ size = Vector2(14, 30)
 [node name="Tree" type="StaticBody2D" unique_id=1735896527]
 
 [node name="Tree1" type="Sprite2D" parent="." unique_id=808924749]
+visibility_layer = 0
 texture = ExtResource("1_iphuf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=985810334]
